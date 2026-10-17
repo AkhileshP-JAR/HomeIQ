@@ -87,3 +87,7 @@ Desktop.ini
 # Uncomment if these contain private or generated data:
 # python_backend/home_facts.txt
 # home_facts.txt
+
+# Local development configuration
+.local/
+

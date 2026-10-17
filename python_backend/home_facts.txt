@@ -1,0 +1,159 @@
+# HomeIQ Deep Domain Knowledge Base 
+
+# 1. Electrical & Wiring System
+
+* **Main Service**:
+  The house uses **230V single-phase electrical supply** with a **63 Amp distribution board** installed in the utility area.
+
+* **Distribution Board**:
+  The main DB uses **MCBs and RCCB from Legrand** for circuit protection.
+
+* **Wiring Type**:
+  Internal wiring uses **FRLS copper wires from Polycab**.
+
+  Typical sizes:
+
+  * **1.5 sq mm** – lighting circuits
+  * **2.5 sq mm** – sockets
+  * **4 sq mm** – heavy appliances (AC, geyser)
+
+* **Switches**:
+  Modular switches are **Anchor by Panasonic**.
+
+* **Smart Switches**:
+  Living room smart lighting is controlled using **Havells smart switches** connected to Wi-Fi via the **Havells Sync App**.
+
+### Troubleshooting
+
+If a switch stops working:
+
+1. Check the **MCB in the distribution board**.
+2. Restart the **Wi-Fi router**.
+3. Re-pair the switch in the **Havells Sync App**.
+4. Turn off the circuit breaker for **10 seconds** to reset the switch.
+
+
+# 2. Plumbing & Water System
+
+* **Pipes**:
+  Water lines use **CPVC piping from Astral Pipes**.
+
+* **Water Heater (Geyser)**:
+  Bathrooms have **25-liter storage geysers from AO Smith**.
+
+* **Main Shutoff Valve**:
+  The main water line includes a **brass ball valve from Jaquar**.
+
+* **Water Purifier**:
+  Drinking water is filtered using a **RO purifier from Kent**.
+
+### Failures & Lifespan
+
+* CPVC pipes: **40–50 years lifespan**
+* Geyser heating element: **4–7 years**
+* RO filter cartridges: **6–12 months**
+
+### Troubleshooting (No Hot Water)
+
+1. Check **MCB for the geyser**.
+2. Reset the **thermal cut-off switch**.
+3. Replace the **heating element** if water doesn't heat.
+
+
+# 3. Cooling & Climate Control (HVAC)
+
+* **Cooling System**:
+  The house uses **1.5-ton inverter split AC units from Daikin**.
+
+* **Additional AC Units**:
+  Guest bedroom uses **Voltas** inverter AC.
+
+* **Smart AC Control**:
+  AC automation is managed using **Ambi Climate**.
+
+### Troubleshooting (AC Not Cooling)
+
+Check the following:
+
+1. Is the **outdoor compressor running**?
+2. Clean the **AC air filter** (every **2–3 months**).
+3. Verify the **remote temperature setting**.
+4. Ensure the **voltage stabilizer** is working.
+
+
+# 4. Security & Access
+
+* **Smart Lock**:
+  The main door uses a **Godrej Advantis Smart Lock**.
+
+* **Cameras**:
+  Indoor security cameras are **Mi 360° Home Security Camera**.
+
+* **Video Door Phone**:
+  Doorbell system uses **Hikvision** video door phone.
+
+### Lock Troubleshooting
+
+If the lock jams:
+
+1. Replace **AA batteries**.
+2. Check **door alignment**.
+3. Recalibrate the lock using keypad settings.
+
+
+# 5. Ambient & Automated Systems
+
+* **RGB Lighting**:
+  Mood lighting uses **Wipro Smart RGB LED strips** controlled via **Wipro Next Smart Home**.
+
+* **Smart Bulbs**:
+  Living room lamps use **Philips Smart Wi-Fi bulbs**.
+
+* **Smart Blinds**:
+  Bedroom windows use **motorized blinds from Wintrobe**.
+
+### Maintenance
+
+* Smart blinds battery: **Recharge every 4–6 months**
+* LED strips lifespan: **20,000–25,000 hours**
+
+
+# 6. Networking & Smart Home Hub
+
+* **Internet Provider**:
+  The house uses **Reliance Jio fiber broadband**.
+
+* **Router**:
+  Wi-Fi is provided by **TP-Link Archer series router**.
+
+* **Coverage**:
+  The router supports **2.4 GHz and 5 GHz networks** for smart devices.
+
+### Troubleshooting
+
+If smart devices disconnect:
+
+1. Restart the **router**.
+2. Check if devices are connected to **2.4 GHz network**.
+3. Move router away from **metal objects or walls**.
+
+
+# General Guidelines for the AI Assistant
+
+You are **HomeIQ**.
+
+Capabilities:
+
+* Help with **home automation**
+* Provide **troubleshooting for house systems**
+* Answer **any general knowledge question**
+* Write **emails, code, essays**
+* Solve **math and logic problems**
+
+When answering **home questions**:
+
+* Always reference the **specific brands in this knowledge base**
+* Provide **step-by-step troubleshooting**
+* Mention **lifespan and maintenance schedules**
+
+

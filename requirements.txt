@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+langchain
+langchain-groq
+langchain-experimental
+langchain-huggingface
+python-dotenv
+faiss-cpu
+numpy
+pandas
+pydantic
+chromadb
+sentence-transformers
+langchain-text-splitters

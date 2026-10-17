@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeIQ Assistant</title>
+    <meta name="description" content="HomeIQ - Your intelligent virtual assistant">
+    <!-- Inline SVG Favicon to prevent 404s -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for premium iconography -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <!-- <i class="ph-house"></i> -->
+                    <span>HomeIQ</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" id="nav-chat-btn">
+                    <i class="ph ph-chat-circle-dots"></i>
+                    <span>Chat Assistant</span>
+                </button>
+                <button class="nav-item" id="nav-home-btn">
+                    <i class="ph ph-house-line"></i>
+                    <span>Smart Home</span>
+                </button>
+            </nav>
+
+            <!-- <div class="sidebar-footer">
+                <div class="settings-btn">
+                    <i class="ph ph-gear"></i>
+                    <span>Settings</span>
+                </div>
+            </div> -->
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area">
+            <header class="chat-header">
+                <h1 id="chat-title">HomeIQ Assistant</h1>
+                <div class="header-actions">
+                    <button class="icon-btn" title="Clear Chat" id="clear-chat-btn">
+                        <i class="ph ph-trash"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="chat-messages" id="chat-messages">
+                <!-- Welcome Message -->
+                <div class="message assistant">
+                    <div class="avatar">
+                        <i class="ph-fill ph-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I am HomeIQ, your personal intelligent assistant. How can I help you today?</p>
+                    </div>
+                </div>
+                <!-- Dynamic messages will be appended here -->
+            </div>
+
+            <div class="chat-input-container">
+                <form id="chat-form" class="chat-form">
+                    <div class="input-wrapper">
+                        <textarea id="message-input" placeholder="Type your message here..." rows="1"
+                            autofocus></textarea>
+                        <button type="submit" class="send-btn" id="send-btn" disabled>
+                            <i class="ph-fill ph-paper-plane-right"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="input-footer">
+                    HomeIQ uses advanced language models. AI can make mistakes. <br>
+                    &copy; 2026 | Project developed by Akhilesh Patil
+                </div>
+            </div>
+        </main>
+
+        <!-- Smart Home Dashboard Panel -->
+        <section class="dashboard-area hidden" id="dashboard-area">
+            <header class="chat-header">
+                <div class="header-left">
+                    <h1>Smart Home</h1>
+                    <button class="icon-btn routine-btn" id="routine-morning-btn" title="Good Morning Routine">
+                        <i class="ph ph-sun"></i> Good Morning
+                    </button>
+                    <button class="icon-btn routine-btn" id="routine-night-btn" title="Good Night Routine">
+                        <i class="ph ph-moon"></i> Good Night
+                    </button>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" title="Refresh State" id="refresh-devices-btn">
+                        <i class="ph ph-arrows-clockwise"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <div class="dashboard-layout">
+                    <!-- Floorplan Map -->
+                    <div class="floorplan-container">
+                        <div class="floorplan">
+                            <div class="room living-room" id="room-living_room">
+                                <span class="room-label">Living Room</span>
+                                <i class="ph-fill ph-lightbulb device-marker map-light" id="map-living_room_light"></i>
+                                <i class="ph-fill ph-thermometer device-marker map-thermostat" id="map-thermostat"></i>
+                                <i class="ph-fill ph-video-camera device-marker map-camera" id="map-mi_camera"></i>
+                            </div>
+                            <div class="room bedroom" id="room-bedroom">
+                                <span class="room-label">Bedroom</span>
+                                <i class="ph-fill ph-lamp device-marker map-light" id="map-bedroom_light"></i>
+                                <i class="ph-fill ph-blinds device-marker map-blinds" id="map-bedroom_blinds"></i>
+                            </div>
+                            <div class="room hallway" id="room-hallway">
+                                <span class="room-label">Front Door</span>
+                                <i class="ph-fill ph-lock-key device-marker map-lock" id="map-front_door_lock"></i>
+                                <i class="ph-fill ph-lightbulb device-marker map-rgb" id="map-ambient_rgb"
+                                    style="color: #ffffff;"></i>
+                                <i class="ph-fill ph-bell-ringing device-marker map-doorbell"
+                                    id="map-hikvision_doorbell"></i>
+                            </div>
+                            <div class="room bathroom" id="room-bathroom">
+                                <span class="room-label">Bathroom</span>
+                                <i class="ph-fill ph-drop device-marker map-geyser" id="map-bathroom_geyser"
+                                    style="top: 50%; left: 50%;"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Device Controls List -->
+                    <div class="device-controls-section">
+                        <h2>Device Controls</h2>
+                        <div class="device-grid">
+
+                            <!-- Living Room Light Card -->
+                            <div class="device-card" id="card-living_room_light">
+                                <div class="device-icon">
+                                    <i class="ph ph-lightbulb"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h3>Havells Smart Switch</h3>
+                                    <span class="device-status" id="status-living_room_light">Off</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="toggle-living_room_light"
+                                        data-device="living_room_light">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <!-- Bedroom Light Card -->
+                            <div class="device-card" id="card-bedroom_light">
+                                <div class="device-icon">
+                                    <i class="ph ph-lamp"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h3>Philips Smart Bulb</h3>
+                                    <span class="device-status" id="status-bedroom_light">Off</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="toggle-bedroom_light" data-device="bedroom_light">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <!-- Thermostat Card -->
+                            <div class="device-card thermostat-card" id="card-thermostat">
+                                <div class="device-header-row">
+                                    <div class="device-icon">
+                                        <i class="ph ph-thermometer"></i>
+                                    </div>
+                                    <div class="device-info">
+                                        <h3>Daikin Inverter AC</h3>
+                                        <span class="device-status"><span id="val-thermostat">72</span>°F</span>
+                                    </div>
+                                </div>
+                                <div class="slider-container">
+                                    <i class="ph ph-snowflake"></i>
+                                    <input type="range" min="60" max="85" value="72" class="range-slider"
+                                        id="slider-thermostat" data-device="thermostat">
+                                    <i class="ph ph-fire"></i>
+                                </div>
+                            </div>
+
+                            <!-- RGB Ambient Card -->
+                            <div class="device-card" id="card-ambient_rgb">
+                                <div class="device-icon">
+                                    <i class="ph ph-palette"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h3>Wipro RGB Strip</h3>
+                                    <span class="device-status" id="status-ambient_rgb">White</span>
+                                </div>
+                                <input type="color" class="color-picker" id="color-ambient_rgb"
+                                    data-device="ambient_rgb" value="#ffffff">
+                            </div>
+
+                            <!-- Front Door Lock Card -->
+                            <div class="device-card" id="card-front_door_lock">
+                                <div class="device-icon">
+                                    <i class="ph ph-lock-key"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h3>Godrej Advantis Lock</h3>
+                                    <span class="device-status" id="status-front_door_lock">Locked</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="toggle-front_door_lock" data-device="front_door_lock"
+                                        checked>
+                                    <span class="toggle-slider lock-slider"></span>
+                                </label>
+                            </div>
+
+                            <!-- Smart Blinds Card -->
+                            <div class="device-card thermostat-card" id="card-bedroom_blinds">
+                                <div class="device-header-row">
+                                    <div class="device-icon">
+                                        <i class="ph ph-blinds"></i>
+                                    </div>
+                                    <div class="device-info">
+                                        <h3>Wintrobe Blinds</h3>
+                                        <span class="device-status"><span id="val-bedroom_blinds">0</span>% Open</span>
+                                    </div>
+                                </div>
+                                <div class="slider-container">
+                                    <i class="ph ph-eye-closed"></i>
+                                    <input type="range" min="0" max="100" value="0" class="range-slider blinds-slider"
+                                        id="slider-bedroom_blinds" data-device="bedroom_blinds">
+                                    <i class="ph ph-eye"></i>
+                                </div>
+                            </div>
+
+                            <!-- Mi Security Camera Card -->
+                            <div class="device-card" id="card-mi_camera">
+                                <div class="device-icon">
+                                    <i class="ph ph-video-camera"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h3>Mi 360° Camera</h3>
+                                    <span class="device-status" id="status-mi_camera">Active</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="toggle-mi_camera" data-device="mi_camera" checked>
+                                    <span class="toggle-slider camera-slider"></span>
+                                </label>
+                            </div>
+
+                            <!-- Hikvision Doorbell Card -->
+                            <div class="device-card" id="card-hikvision_doorbell">
+                                <div class="device-icon">
+                                    <i class="ph ph-bell-ringing"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h3>Hikvision Door Phone</h3>
+                                    <span class="device-status" id="status-hikvision_doorbell">Active</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="toggle-hikvision_doorbell"
+                                        data-device="hikvision_doorbell" checked>
+                                    <span class="toggle-slider camera-slider"></span>
+                                </label>
+                            </div>
+
+                            <!-- AO Smith Geyser Card -->
+                            <div class="device-card" id="card-bathroom_geyser">
+                                <div class="device-icon">
+                                    <i class="ph ph-drop"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h3>AO Smith Geyser</h3>
+                                    <span class="device-status" id="status-bathroom_geyser">Off</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="toggle-bathroom_geyser" data-device="bathroom_geyser">
+                                    <span class="toggle-slider geyser-slider"></span>
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-footer" style="padding-bottom: 20px; text-align: center;">
+                HomeIQ uses advanced language models. AI can make mistakes. <br>
+                &copy; 2026 | Project developed by Akhilesh Patil
+            </div>
+        </section>
+    </div>
+
+    <!-- Loading Indicator Template -->
+    <template id="loading-template">
+        <div class="message assistant loading-message">
+            <div class="avatar">
+                <i class="ph-fill ph-robot"></i>
+            </div>
+            <div class="message-content">
+                <div class="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>

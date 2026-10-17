@@ -1,0 +1,89 @@
+# ==============================
+# Environment variables & secrets
+# ==============================
+.env
+.env.*
+!.env.example
+python_backend/.env
+python_backend/.env.*
+
+# ==============================
+# Python virtual environments
+# ==============================
+.venv/
+venv/
+env/
+
+# ==============================
+# Python cache & compiled files
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# ==============================
+# Python tooling
+# ==============================
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ==============================
+# Node.js & frontend dependencies
+# ==============================
+node_modules/
+
+# ==============================
+# Build outputs
+# ==============================
+dist/
+build/
+out/
+
+# ==============================
+# Vite
+# ==============================
+vite.config.ts.timestamp-*
+vite.config.ts.*.timestamp-*
+
+# ==============================
+# OS-generated files
+# ==============================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==============================
+# Logs & temporary files
+# ==============================
+*.log
+*.tmp
+*.swp
+*.bak
+
+# ==============================
+# Archives
+# ==============================
+*.tar.gz
+*.zip
+
+# ==============================
+# IDE settings
+# ==============================
+.vscode/
+.idea/
+
+# ==============================
+# Local Python version manager
+# ==============================
+.python-version
+
+# ==============================
+# Local-only data (review before ignoring)
+# ==============================
+# Uncomment if these contain private or generated data:
+# python_backend/home_facts.txt
+# home_facts.txt
